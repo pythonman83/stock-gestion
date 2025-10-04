@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <!-- Encodage et compatibilité -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <!-- SEO de base -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Application web de gestion de stock GreenCart Marseille : interface intuitive, gestion des produits, suivi des quantités, alertes de stock bas et export CSV/JSON.">
+  <meta name="keywords" content="gestion de stock, application web, GreenCart, Marseille, produits, inventaire, utilisateurs, supermarché, logiciel gratuit">
+  <meta name="author" content="Jean-Claude Lugo">
+  <meta name="robots" content="index, follow">
+
+  <!-- SEO social (Open Graph pour Facebook/LinkedIn) -->
+  <meta property="og:title" content="GreenCart - Application de gestion de stock à Marseille">
+  <meta property="og:description" content="Gérez vos produits, suivez vos stocks et exportez vos données facilement avec GreenCart.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://votresite.com/">
+  <meta property="og:image" content="https://votresite.com/images/preview.png">
+  <meta property="og:locale" content="fr_FR">
+
+  <!-- SEO social (Twitter Card) -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="GreenCart - Gestion de stock simple et efficace">
+  <meta name="twitter:description" content="Application web pour gérer vos produits et suivre vos inventaires en temps réel.">
+  <meta name="twitter:image" content="https://votresite.com/images/preview.png">
+  <meta name="twitter:site" content="@VotreCompte">
+
+  <!-- Accessibilité et langue -->
+  <meta name="language" content="French">
+  <meta name="distribution" content="global">
+  <meta name="rating" content="general">
+
+  <!-- SEO mobile et performance -->
+  <meta name="theme-color" content="#28a745">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+  <!-- Canonical URL (éviter le contenu dupliqué) -->
+  <link rel="canonical" href="https://votresite.com/">
+
+  <!-- Favicon et icônes -->
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+  
+
+  <link rel="icon" type="image/x-icon" href="favicon.png">
+
+  <title>Gestion de Stock - GreenCart- Marseille</title>
+
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/styles.css">
+
+  <style>
+
+  </style>
+
+</head>
+
+<body>
+
+<div id="loginPage" class="login-container"> 
+
+  <div class="card">
+
+    <div class="card-body p-5">
+
+     <div class="text-center mb-4">
+
+       <div class="icon-wrapper mb-3">
+          <i class="fas fa-shopping-cart fa-3x text-success"></i>
+       </div>
+
+       <div class="form-badges">
+          <span class="badge-category badge-electronique">Électronique</span>
+          <span class="badge-category badge-alimentaire">Alimentaire</span>
+          <span class="badge-category badge-vetements">Vêtements</span>
+          <span class="badge-category badge-meubles">Meubles</span>
+          <span class="badge-category badge-autre">Autre</span>
+        </div>
+       <h3 class="text-white mt-3 fw-bold">🏪 GreenCart- Marseille</h3>
+       <p class="text-muted">Gestion des stocks du magasin</p>
+    </div>
+
+    <form id="loginForm">
+    <!-- Champ Identifiant avec icône utilisateur -->
+      <div class="mb-3">
+        <!-- Label associé directement via for -->
+        <label for="username" class="form-label" style="cursor: pointer;">Identifiant :</label>
+        <div class="input-group mt-1">
+          <span class="input-group-text">
+            <i class="fas fa-user text-white fw-bold"></i>
+          </span>
+          <!-- Input correctement lié au label -->
+          <input 
+            type="text" 
+            id="username" 
+            name="username" 
+            class="form-control"
+            aria-label="Nom d'utilisateur"
+            placeholder="Entrez votre nom d'utilisateur ici..."
+            autocomplete="username"
+            required>
+        </div>
+        <small>admin / user</small>
+      </div>
+
+    <!-- Champ Mot de passe avec icône verrou + bouton afficher/masquer -->
+      <div class="mb-3">
+        <!-- Le label est bien associé à l'input grâce à for="password" -->
+        <label for="password" class="form-label" style="cursor: pointer;">Mot de passe :</label>
+        <div class="input-group">
+          <span class="input-group-text">
+            <i class="fas fa-lock text-white fw-bold"></i>
+          </span>
+          <!-- Input correctement lié au label -->
+          <input 
+            type="password" 
+            id="password" 
+            name="password"
+            class="form-control" 
+            aria-label="Mot de passe"
+            placeholder="Entrez votre mot de passe ici..." 
+            autocomplete="current-password"
+            required>
+          <!-- Bouton afficher/masquer mot de passe -->
+          <button 
+            class="btn btn-outline-secondary" 
+            type="button" 
+            id="togglePassword" 
+            aria-label="Bouton afficher ou masquer le mot de passe">
+      <i class="fas fa-eye" id="togglePasswordIcon"></i>
+    </button>
+  </div>
+  <small>admin123 / user123</small>
+</div>
+
+  <!-- Bouton Se connecter -->
+    <button type="submit" class="btn btn-success w-100" aria-label="Bouton pour se connecter au tableau de bord">
+      <i class="fas fa-sign-in-alt me-1"></i> Se connecter
+    </button>
+  </form>
+    <span class="dot"></span>
+  </div>
+ </div>
+</div>
+
+<div id="mainApp" class="hidden">
+  <nav class="navbar navbar-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand">
+        <i class="fas fa-shopping-cart me-2"></i>🏪 GreenCart - Gestion des stocks actuels
+      </a>
+      <div>
+        <span class="text-white me-3">
+          <i class="fas fa-user-circle me-1"></i>
+          <span id="currentUser"></span>
+        </span>
+        <button type="button" id="adminBtn" class="btn btn-outline-light btn-sm me-2" aria-label="bouton pour gérer la liste des utilisateurs">
+          Gestion des utilisateurs
+        </button>
+        <button type="button" id="logoutBtn" class="btn btn-danger btn-sm" aria-label="bouton pour déconnecter l'utilisateur actuel">
+          <i class="fas fa-sign-out-alt"></i> Déconnexion
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container-fluid mt-4">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="stats-card">
+          <h5><i class="fas fa-box text-primary me-2"></i>Nombre de produits différents</h5>
+          <h2 id="totalProducts">0</h2>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="stats-card">
+          <h5><i class="fas fa-cubes text-success me-2"></i>Nombre total de produits</h5>
+          <h2 id="totalQuantity">0</h2>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="stats-card">
+          <h5><i class="fas fa-exclamation-triangle text-warning me-2"></i>Nombre de produits ayant un stock bas</h5>
+          <h2 id="lowStock">0</h2>
+        </div>
+      </div>
+    </div>
+    
+    <div id="dashboardPage">
+      <div class="d-flex flex-wrap justify-content-between align-items-center mb-3 gap-2">
+        <h4 class="text-white"><i class="fas fa-list me-2"></i>Liste des produits en rayon</h4>
+        <div class="d-flex flex-wrap gap-2">
+          <button type="button" id="addProductBtn" class="btn btn-success">
+            <i class="fas fa-plus me-1"></i> Ajouter un produit
+          </button>
+          <button type="button" id="exportBtn" class="btn btn-info">
+            <i class="fas fa-file-csv me-1"></i> Exporter en CSV
+          </button>
+          <button id="exportJSONBtn" class="btn btn-warning">
+            <i class="fas fa-download me-1"></i> Exporter en JSON
+          </button>
+          <button type="button" id="importJSONBtn" class="btn btn-secondary">
+            <i class="fas fa-upload me-1"></i> Importer en JSON
+          </button>
+          <input type="file" id="importFile" accept="application/json" class="d-none">
+        </div>
+      </div>
+      
+      <div class="mb-3">
+        <input type="text" id="searchInput" class="form-control" placeholder="🔍 Rechercher par nom ou quantité...">
+      </div>
+
+      <div class="table-container">
+        <div class="table-responsive">
+          <table class="table table-hover">
+            <thead class="table-dark">
+              <tr>
+                <th>N° du produit</th>
+                <th>Nom</th>
+                <th>Qté</th>
+                <th>Prix</th>
+                <th>Catégorie</th>
+                <th>Statut</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="productsTable"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div id="adminPage" class="hidden">
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <h4 class="text-white"><i class="fas fa-users-cog me-2"></i>Gestion des utilisateurs</h4>
+        <button type="button" id="backToDashboard" class="btn btn-secondary">
+          ← Retour aux produits
+        </button>
+      </div>
+      <button type="button" id="addUserBtn" class="btn btn-success mb-3">
+        <i class="fas fa-user-plus me-1"></i> Ajouter un utilisateur
+      </button>
+      <div class="table-container">
+        <div class="table-responsive">
+          <table class="table table-hover">
+            <thead class="table-dark">
+              <tr>
+                <th>Nom d'utilisateur</th>
+                <th>Rôle</th>
+                <th>Statut</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="usersTable"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="productModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 id="modalTitle">Enregistrer un nouveau produit</h5>
+        <button class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <form id="productForm">
+          <input type="hidden" id="productId">
+          <div class="mb-2">
+            <label for="productName" style="cursor: pointer;"> Nom du produit : </label>
+            <input class="form-control" id="productName" autocomplete="nom du produit" placeholder="Entrez le nom du produit ici.." required>
+          </div>
+          <div class="mb-2">
+            <label for="productQuantity" style="cursor: pointer;"> Quantité : </label>
+            <input type="number" class="form-control" id="productQuantity" autocomplete="quantité produit" placeholder="Entrez le nombre de produit ici.." required>
+          </div>
+          <div class="mb-2">
+            <label for="productPrice" style="cursor: pointer;"> Prix (€) : </label>
+            <input type="number" class="form-control" id="productPrice" step="0.01" autocomplete="prix du produit" placeholder="Entrez le prix du produit ici..." required>
+          </div>
+         <div class="mb-2">
+  <!-- Label lié au select par for/id -->
+  <label for="productCategory" class="form-label">Catégorie :</label>
+
+  <select 
+    id="productCategory" 
+    name="productCategory"
+    class="form-select" 
+    aria-label="Sélectionnez une catégorie de produit"
+    required>
+    <option value="" disabled selected>-- Sélectionnez une catégorie --</option>
+    <option value="Électronique">Électronique</option>
+    <option value="Alimentaire">Alimentaire</option>
+    <option value="Vêtements">Vêtements</option>
+    <option value="Meubles">Meubles</option>
+    <option value="Autre">Autre</option>
+  </select>
+</div>
+
+</form>
+  </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" aria-label="Bouton pour annuler l'enregistrement du nouveau produit">Annuler</button>
+      <button type="button" id="saveProductBtn" class="btn btn-primary" aria-label="Bouton pour enregistrer du nouveau produit">Enregistrer</button>
+    </div>
+   </div>
+  </div>
+</div>
+
+<div class="modal fade" id="userModal"><div class="modal-dialog"><div class="modal-content">
+  <div class="modal-header">
+    <h5>Nouvel utilisateur</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Croix pour fermer le modal"></button>
+  </div>
+  <div class="modal-body">
+    <form id="userForm">
+      <div class="mb-3">
+        <label for="newUsername" class="form-label" style="cursor: pointer;"> Nom d'utilisateur : </label>
+        <input type="text" class="form-control" id="newUsername" autocomplete="nom utilisateur" placeholder="Entrez le nom utilisateur ici..." required>
+      </div>
+      <div class="mb-3">
+        <label for="newPassword" class="form-label" style="cursor: pointer;"> Mot de passe : </label>
+        <input type="password" class="form-control" id="newPassword" autocomplete="mot de passe utilisateur" placeholder="Entrez le mot de passe utilisateur ici..." required>
+      </div>
+      <div class="mb-3">
+  <!-- Label correctement lié via for/id -->
+  <label for="newRole" class="form-label" style="cursor: pointer;">Rôle :</label>
+  <select 
+    id="newRole" 
+    name="newRole" 
+    class="form-select"
+    aria-label="Sélectionnez le rôle de l'utilisateur"
+    required>
+    <option value="" disabled selected>-- Sélectionnez un rôle --</option>
+    <option value="user">Utilisateur</option>
+    <option value="admin">Administrateur</option>
+  </select>
+</div>
+
+</form>
+</div>
+
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" aria-label="bouton pour annuler l'enregistrement d'un nouvel urilisateur">Annuler</button>
+    <button type="button" id="saveUserBtn" class="btn btn-primary" aria-label="bouton pour créer un novel utilisateur">Créer</button>
+  </div>
+ </div>
+</div>
+</div>
+
+<div id="alertContainer"></div>
+<audio id="alertSound" preload="auto">
+  <source src="data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmwhBDGH0fPTgjMGHm7A7+OZURE=" type="audio/wav">
+</audio>
+
+<button type="button" id="scrollTopBtn" class="scroll-top-btn" aria-label="bouton pour remonter en haut de la page">↑</button>
+
+<!-- Émojis flottants -->
+<span class="emoji emoji1">🥖</span>   <!-- Baguette -->
+<span class="emoji emoji2">🍎</span>   <!-- Pomme -->
+<span class="emoji emoji3">🥬</span>   <!-- Légume -->
+<span class="emoji emoji4">🥩</span>   <!-- Viande -->
+<span class="emoji emoji5">🧀</span>   <!-- Fromage -->
+<span class="emoji emoji6">🛋️</span>  <!-- Meuble -->
+<span class="emoji emoji7">👕</span>   <!-- Vêtement -->
+<span class="emoji emoji8">💻</span>   <!-- Électronique -->
+<span class="emoji emoji1">📱</span>   <!-- Téléphone -->
+<span class="emoji emoji2">🛒</span>   <!-- Caddie -->
+<span class="emoji emoji3">🥤</span>   <!-- Boisson -->
+<span class="emoji emoji4">👗</span>   <!-- Robe -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+
+
+<script src="js/script.js"></script>
+
+
+</body>
+</html>

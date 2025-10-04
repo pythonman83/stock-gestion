@@ -1,0 +1,612 @@
+ @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+  background-size: 400% 400%;
+  animation: bgGradient 12s ease infinite;
+}
+
+/* 🌈 Animation dégradé vibrant */
+@keyframes bgGradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(circle at 20% 50%, rgba(255, 193, 7, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(40, 167, 69, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 40% 20%, rgba(220, 53, 69, 0.1) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ✨ Icônes flottantes individuelles */
+.emoji {
+  position: fixed;
+  font-size: 2rem;
+  opacity: 0.9;
+  pointer-events: none;
+  animation: floatIcons 12s ease-in-out infinite alternate;
+}
+
+/* Animation flottante */
+@keyframes floatIcons {
+  0%   { transform: translateY(0); opacity: 0.8; }
+  50%  { transform: translateY(-60px); opacity: 1; }
+  100% { transform: translateY(0); opacity: 0.8; }
+}
+
+/* Position aléatoire pour chaque emoji */
+.emoji1 { top: 20%; left: 10%; animation-delay: 0s; }
+.emoji2 { top: 40%; left: 25%; animation-delay: 2s; }
+.emoji3 { top: 60%; left: 70%; animation-delay: 4s; }
+.emoji4 { top: 30%; left: 80%; animation-delay: 6s; }
+.emoji5 { top: 50%; left: 50%; animation-delay: 1s; }
+.emoji6 { top: 70%; left: 20%; animation-delay: 3s; }
+.emoji7 { top: 80%; left: 60%; animation-delay: 5s; }
+.emoji8 { top: 15%; left: 75%; animation-delay: 7s; }
+
+    
+    .login-container {
+      max-width: 600px;
+      margin: 80px auto;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .card {
+      border-radius: 25px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+      border: none;
+      overflow: hidden;
+      background: linear-gradient(145deg, #ffffff 0%, #f8f9fa 100%);
+      background: rgba(255, 255, 255, 0.15); /* 🌐 glassmorphism */
+      backdrop-filter: blur(15px);
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 1s ease forwards;
+    }
+    
+    .card-body {
+      padding: 3rem !important;
+      position: relative;
+    }
+    
+    .login-container .card::before {
+      content: '🛒';
+      font-size: 80px;
+      position: absolute;
+      top: -20px;
+      right: -20px;
+      opacity: 0.1;
+      transform: rotate(-15deg);
+    }
+
+    /* Logo pulsant */
+    .login-container .card i.fa-shopping-cart {
+      animation: pulseLogo 2s infinite;
+    }
+    @keyframes pulseLogo {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.2); opacity: 0.8; }
+    }
+
+    /* Points décoratifs animés */
+    .login-container .card-body::before {
+      content: "•••";
+      font-size: 2rem;
+      color: rgba(40,167,69,0.3);
+      position: absolute;
+      top: 10px;
+      left: 20px;
+      animation: dotsBlink 2s infinite alternate;
+    }
+    @keyframes dotsBlink {
+      from { opacity: 0.2; }
+      to { opacity: 1; }
+    }
+    
+    .navbar {
+      background: linear-gradient(135deg, #28a745 0%, #20c997 100%) !important;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+      padding: 1rem 0;
+      position: relative;
+      z-index: 10;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 1s ease forwards;
+    }
+    
+    .navbar::after {
+      content: '🛒 🥖 🧀 🥩 🥬 🍎';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 1.2rem;
+      opacity: 0.8;
+      color: rgba(255, 255, 255, 0.9); /* Icônes claires sur fond vert */
+      white-space: nowrap;
+      pointer-events: none;
+    }
+    
+    .navbar-brand {
+      font-weight: 700;
+      font-size: 1.5rem;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+    }
+    
+    .stats-card {
+      background: linear-gradient(145deg, #ffffff 0%, #f8f9fa 100%);
+      border-radius: 20px;
+      padding: 2rem;
+      margin-bottom: 25px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+      border: 3px solid transparent;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 1s ease forwards;
+    }
+    
+    .stats-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 6px;
+      background: linear-gradient(90deg, #ff6b6b, #feca57, #48dbfb, #ff6b6b);
+      background-size: 200% 100%;
+      animation: gradient-slide 3s linear infinite;
+    }
+    
+    @keyframes gradient-slide {
+      0% { background-position: 0% 0%; }
+      100% { background-position: 200% 0%; }
+    }
+    
+    .stats-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 35px rgba(0,0,0,0.2);
+    }
+    
+    .stats-card h5 {
+      font-weight: 600;
+      color: #2d3436;
+      margin-bottom: 1rem;
+    }
+    
+    .stats-card h2 {
+      font-weight: 700;
+      font-size: 3rem;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .table-container {
+      background: white;
+      border-radius: 25px;
+      padding: 2rem;
+      margin-top: 25px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+      border: 4px solid #fff;
+      position: relative;
+      z-index: 1;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 1s ease forwards;
+    }
+    
+    .table-container::before {
+      content: '🏪';
+      position: absolute;
+      font-size: 120px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      opacity: 0.03;
+      pointer-events: none;
+    }
+    
+    .table {
+      margin-bottom: 0;
+    }
+    
+    .table thead {
+      background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+      color: white;
+    }
+    
+    .table thead th {
+      border: none;
+      padding: 1rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      font-size: 0.85rem;
+      letter-spacing: 1px;
+    }
+    
+    .table tbody tr {
+      transition: all 0.3s ease;
+      border-bottom: 2px solid #f1f3f5;
+    }
+    
+    .table tbody tr:hover {
+      background: linear-gradient(90deg, rgba(40, 167, 69, 0.1), rgba(32, 201, 151, 0.1));
+      transform: scale(1.01);
+    }
+    
+    .badge {
+      padding: 0.5rem 1rem;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 0.85rem;
+      letter-spacing: 0.5px;
+    }
+    
+    .badge-stock {
+      font-size: 1rem;
+      padding: 0.6rem 1.2rem;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+    }
+
+    /* Tags colorés catégories */
+    .badge-category { display: inline-block; padding: 0.4rem 0.8rem; border-radius: 12px; font-weight: 600; font-size: 0.8rem; color: white; }
+    .badge-electronique { background: linear-gradient(135deg, #007bff, #00c6ff); }
+    .badge-alimentaire { background: linear-gradient(135deg, #28a745, #85e085); }
+    .badge-vetements   { background: linear-gradient(135deg, #ff6b6b, #ff9f43); }
+    .badge-meubles     { background: linear-gradient(135deg, #6f42c1, #9d6fff); }
+    .badge-autre       { background: linear-gradient(135deg, #6c757d, #adb5bd); }
+    
+    .btn {
+      border-radius: 50px;
+      padding: 0.6rem 1.5rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: all 0.3s ease;
+      border: none;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+    
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+    }
+
+    /* Effet brillance bouton Enregistrer */
+    #saveProductBtn {
+      position: relative;
+      overflow: hidden;
+    }
+    #saveProductBtn::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 50%;
+      height: 100%;
+      background: rgba(255,255,255,0.5);
+      transform: skewX(-20deg);
+      transition: left 0.6s ease;
+    }
+    #saveProductBtn:hover::after {
+      left: 150%;
+    }
+    
+    .btn-primary { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+    .btn-success { background: linear-gradient(135deg, #28a745 0%, #20c997 100%); }
+    .btn-info { background: linear-gradient(135deg, #17a2b8 0%, #48dbfb 100%); }
+    .btn-warning { background: linear-gradient(135deg, #ffc107 0%, #ff9800 100%); color: #000; }
+    .btn-danger { background: linear-gradient(135deg, #dc3545 0%, #ff6b6b 100%); }
+    .btn-secondary { background: linear-gradient(135deg, #6c757d 0%, #495057 100%); }
+    
+    .form-control, .form-select {
+      border-radius: 15px;
+      border: 2px solid #e9ecef;
+      padding: 0.75rem 1rem;
+      transition: all 0.3s ease;
+    }
+    
+    .form-control:focus, .form-select:focus {
+      border-color: #28a745;
+      box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
+    }
+
+    /* Icônes dans champs */
+    .input-group-text {
+      border-radius: 15px 0 0 15px;
+      background: rgba(40, 167, 69, 0.1);
+      border: 2px solid #28a745;
+      color: #28a745;
+      font-size: 1.1rem;
+    }
+    
+    .modal-content {
+      border-radius: 25px;
+      border: none;
+      overflow: hidden;
+    }
+    
+    .modal-header {
+      background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+      color: white;
+      border: none;
+      padding: 1.5rem;
+    }
+    
+    .modal-header h5 {
+      font-weight: 700;
+      margin: 0;
+    }
+    
+    .modal-body { padding: 2rem; }
+    .modal-footer { border: none; padding: 1.5rem; }
+    
+    .alert-custom {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 9999;
+      min-width: 350px;
+      animation: slideIn 0.3s ease-out;
+      border-radius: 15px;
+      border: none;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    }
+    
+    @keyframes slideIn {
+      from { transform: translateX(400px); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+    
+    .hidden { display: none !important; }
+    
+    .scroll-top-btn {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      display: none;
+      background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      font-size: 24px;
+      cursor: pointer;
+      z-index: 9999;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+      transition: all 0.3s ease;
+    }
+    
+    .scroll-top-btn:hover { transform: scale(1.15) rotate(360deg); }
+    
+    .scroll-top-btn.show {
+      display: block;
+      opacity: 1;
+      animation: pulseGlow 2s infinite;
+    }
+    
+    @keyframes pulseGlow {
+      0%, 100% { box-shadow: 0 0 20px rgba(40, 167, 69, 0.8), 0 0 40px rgba(32, 201, 151, 0.6); }
+      50% { box-shadow: 0 0 40px rgba(40, 167, 69, 1), 0 0 60px rgba(32, 201, 151, 0.8); }
+    }
+    
+    h4 {
+      font-weight: 700;
+      color: #2d3436;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 1.5rem;
+      position: relative;
+      padding-bottom: 0.5rem;
+    }
+    
+    h4::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 60px;
+      height: 4px;
+      background: linear-gradient(90deg, #28a745, #20c997);
+      border-radius: 2px;
+    }
+    
+    .bg-primary { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important; }
+    .bg-success { background: linear-gradient(135deg, #28a745 0%, #20c997 100%) !important; }
+    .bg-warning { background: linear-gradient(135deg, #ffc107 0%, #ff9800 100%) !important; }
+    .bg-danger { background: linear-gradient(135deg, #dc3545 0%, #ff6b6b 100%) !important; }
+    .bg-info { background: linear-gradient(135deg, #17a2b8 0%, #48dbfb 100%) !important; }
+    .bg-secondary { background: linear-gradient(135deg, #6c757d 0%, #495057 100%) !important; }
+    
+    #searchInput {
+      border: 3px solid #28a745;
+      font-size: 1.1rem;
+      padding: 1rem 1.5rem;
+    }
+    #searchInput::placeholder { color: #adb5bd; }
+    
+    .container-fluid { position: relative; z-index: 1; }
+
+    /* Apparition progressive */
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Responsive mobile */
+    @media (max-width: 768px) {
+      .login-container { margin: 40px 20px; }
+      .stats-card h2 { font-size: 2rem; }
+    }
+    /* 🌟 Points décoratifs animés supplémentaires dans l'en-tête du formulaire */
+.login-container .card-body::after {
+  content: "";
+  position: absolute;
+  top: 15px;
+  right: 40px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #28a745;
+  animation: floatDot 3s ease-in-out infinite alternate;
+}
+@keyframes floatDot {
+  from { transform: translateY(0); opacity: 0.6; }
+  to { transform: translateY(-12px); opacity: 1; }
+}
+
+/* Deuxième point décoratif */
+.login-container .card-body span.dot {
+  position: absolute;
+  top: 25px;
+  right: 70px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #ffc107;
+  animation: floatDot2 4s ease-in-out infinite alternate;
+}
+@keyframes floatDot2 {
+  from { transform: translateY(0) scale(1); opacity: 0.5; }
+  to { transform: translateY(-10px) scale(1.3); opacity: 1; }
+}
+
+/* 🎨 Tags colorés pour catégories */
+.badge-category {
+  display: inline-block;
+  padding: 0.4rem 0.8rem;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 0.8rem;
+  color: white;
+  text-transform: capitalize;
+}
+
+.badge-electronique { background: linear-gradient(135deg, #007bff, #00c6ff); }
+.badge-alimentaire { background: linear-gradient(135deg, #28a745, #85e085); }
+.badge-vetements   { background: linear-gradient(135deg, #ff6b6b, #ff9f43); }
+.badge-meubles     { background: linear-gradient(135deg, #6f42c1, #9d6fff); }
+.badge-autre       { background: linear-gradient(135deg, #6c757d, #adb5bd); }
+
+/* Wrapper cercle blanc + halo */
+.icon-wrapper {
+  position: relative;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background: #fff; /* Cercle blanc */
+  margin: 0 auto;
+  box-shadow: 0 0 0 rgba(40, 167, 69, 0.6);
+  animation: pulseHalo 2s infinite ease-in-out;
+}
+
+/* Icône chariot au-dessus */
+.icon-wrapper i {
+  position: relative;
+  z-index: 2;
+}
+
+/* Halo pulsant autour */
+@keyframes pulseHalo {
+  0% {
+    box-shadow: 0 0 0 0 rgba(40, 167, 69, 0.6);
+  }
+  70% {
+    box-shadow: 0 0 0 25px rgba(40, 167, 69, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(40, 167, 69, 0);
+  }
+}
+
+/* 🌈 Barre de défilement personnalisée multicolore */
+::-webkit-scrollbar {
+  width: 14px;                /* largeur de la barre */
+  height: 14px;               /* hauteur (scroll horizontal si besoin) */
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1); /* fond semi-transparent */
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    135deg,
+    #28a745,   /* vert (succès / navbar) */
+    #20c997,   /* vert clair */
+    #667eea,   /* bleu-violet */
+    #764ba2,   /* violet */
+    #ff6b6b,   /* rouge-orangé */
+    #ffc107,   /* jaune-orangé */
+    #17a2b8    /* bleu cyan */
+  );
+  border-radius: 10px;
+  border: 3px solid rgba(255, 255, 255, 0.3); /* effet d’espace */
+  background-size: 200% 200%;
+  animation: scrollGradient 5s ease infinite;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(
+    135deg,
+    #20c997,
+    #28a745,
+    #764ba2,
+    #667eea,
+    #ffc107,
+    #ff6b6b,
+    #17a2b8
+  );
+}
+
+/* ✨ Animation du dégradé sur la barre */
+@keyframes scrollGradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Compatibilité Firefox */
+/* * {
+  scrollbar-width: thin;
+  scrollbar-color: #28a745 rgba(255,255,255,0.1);
+} */
+ 
+
+/* La barre de défilement reprend les couleurs verts, bleus, violets, rouges et jaunes de ta charte graphique.
+
+Un effet animé rend la scrollbar vivante.
+
+Elle est arrondie et élégante pour coller à ton style glassmorphism.
+
+Compatible Chrome / Edge / Safari et Firefox (fallback color). */
